@@ -42,4 +42,55 @@ class BinarySearchTreeTests: XCTestCase {
 
         XCTAssertEqual(25, output)
     }
+    
+    func testThatInsertCanPlaceAValueOnTheRight(){
+        let bst = BinarySearchTree<Int>()
+        let value1 = 50
+        let value2 = 75
+        bst.insert(value: value1)
+        bst.insert(value: value2)
+        var output =  0
+        if let rootRightValue = bst.root.right?.value{
+            output = rootRightValue
+        }
+        
+        XCTAssertEqual(75, output)
+    }
+    
+    
+    func testThatInsertCanPlaceThreeValuesOnTheLeft() {
+        let bst = BinarySearchTree<Int>()
+        let value1 = 50
+        let value2 = 25
+        let value3 = 12
+        bst.insert(value:value1)
+        bst.insert(value: value2)
+        bst.insert(value: value3)
+        var output = 0
+        if let rootLeftVale = bst.root.left?.left?.value{
+            output = rootLeftVale
+        }
+
+        XCTAssertEqual(12, output)
+    }
+    
+    
+    func testThatInsertCanPlaceFourValuesOnTheLeft() {
+        let bst = BinarySearchTree<Int>()
+        let value1 = 50
+        let value2 = 25
+        let value3 = 12
+        let value4 = 37
+        bst.insert(value:value1)
+        bst.insert(value: value2)
+        bst.insert(value: value3)
+        bst.insert(value: value4)
+        var output = 0
+        if let rootRightVale = bst.root.left?.right?.value{
+            output = rootRightVale
+        }
+
+        XCTAssertEqual(37, output)
+    }
+    
 }
