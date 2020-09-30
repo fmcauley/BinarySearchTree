@@ -17,11 +17,26 @@ class BSTNode<T: Comparable> {
         var currentNode: BSTNode<T>
         
         queue.enQueue(aValue: node)
+        
         while queue.hasValues(){
-            if let queueNode = queue.deQueue(){
+            if let queueNode = queue.deQueue() {
+                currentNode = queueNode
                 
+                
+                //printTheValue
+                if let valueOfNode = currentNode.value {
+                    print("node value is: \(valueOfNode)")
+                }
+                
+                if let left = currentNode.left{
+                    queue.enQueue(aValue: left)
+                }
+                if let right = currentNode.right{
+                    queue.enQueue(aValue: right)
+                }
             }
-        }
+            
+        }//end while
     }
 }
 
@@ -37,9 +52,9 @@ class BinarySearchTree<T: Comparable> {
             root.value = value
             return
         }
-    
+        
         var current = root
-    
+        
         while current.value != value {
             if let rootValue = current.value {
                 if value < rootValue {
