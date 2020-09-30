@@ -93,4 +93,29 @@ class BinarySearchTreeTests: XCTestCase {
         XCTAssertEqual(37, output)
     }
     
+    func testThatInsertCanPlaceAValueOnTheRightNested(){
+        let bst = BinarySearchTree<Int>()
+        let value1 = 50
+        let value2 = 75
+        let value3 = 62
+        let value4 = 87
+        bst.insert(value: value1)
+        bst.insert(value: value2)
+        bst.insert(value: value3)
+        bst.insert(value: value4)
+        var output =  0
+        if let rootRightValue = bst.root.right?.right?.value{
+            output = rootRightValue
+        }
+        
+        XCTAssertEqual(87, output)
+        
+        output = 0
+        if let rootRightLeftValue = bst.root.right?.left?.value{
+            output = rootRightLeftValue
+        }
+        
+        XCTAssertEqual(62, output)
+    }
+    
 }
