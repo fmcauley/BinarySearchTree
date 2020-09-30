@@ -118,4 +118,44 @@ class BinarySearchTreeTests: XCTestCase {
         XCTAssertEqual(62, output)
     }
     
+    func testThatBFSWorks() {
+        let bst = BinarySearchTree<Int>()
+       
+        bst.insert(value: 50)
+        bst.insert(value: 25)
+        bst.insert(value: 75)
+        bst.insert(value: 12)
+        bst.insert(value: 63)
+        bst.insert(value: 37)
+        bst.insert(value: 87)
+        bst.root.breathFirstSearch(bst.root)
+    }
+    
+    func testThatICanMakeTheCodeChallengeWork() {
+        let bst = BinarySearchTree<Int>()
+        
+        bst.insert(value: 8)
+        bst.insert(value: 5)
+        bst.insert(value: 10)
+        bst.insert(value: 2)
+        bst.insert(value: 7)
+        bst.insert(value: 9)
+        bst.insert(value: 12)
+        
+        let output = bst.root.findAddends(sum: 17, fromNode: bst.root)
+        print(output)
+    }
+    
+    func testThatASimpleAddendCanBeFound() {
+        let bst = BinarySearchTree<Int>()
+        
+        bst.insert(value: 8)
+        bst.insert(value: 5)
+        bst.insert(value: 10)
+        
+        let output = bst.root.findAddends(sum: 15, fromNode: bst.root)
+        print(output)
+       
+    }
+    
 }

@@ -38,6 +38,46 @@ class BSTNode<T: Comparable> {
             
         }//end while
     }
+    
+    func findAddends(sum: Int, fromNode node: BSTNode<T>) -> [(Int,Int)] {
+        let queue = Queue<BSTNode<T>>()
+        var currentNode: BSTNode<T>
+        var arrOfPairs = [(Int, Int)]()
+        var set = Set<Int>()
+        
+        queue.enQueue(aValue: node)
+        
+        while queue.hasValues(){
+            if let queueNode = queue.deQueue() {
+                currentNode = queueNode
+                
+                //make check for value
+                if let currentValue = currentNode.value as? Int {
+                    let output = sum - currentValue
+                    if set.contains(output) {
+                        arrOfPairs.append((output, currentValue))
+                    } else {
+                        set.insert(currentValue)
+                    }
+                }
+                
+                //printTheValue
+                if let valueOfNode = currentNode.value {
+                    print("node value is: \(valueOfNode)")
+                }
+                
+                if let left = currentNode.left{
+                    queue.enQueue(aValue: left)
+                }
+                if let right = currentNode.right{
+                    queue.enQueue(aValue: right)
+                }
+            }
+            
+        }//end while
+        
+        return arrOfPairs
+    }
 }
 
 class BinarySearchTree<T: Comparable> {

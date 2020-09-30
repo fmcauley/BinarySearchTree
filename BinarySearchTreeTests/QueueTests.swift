@@ -44,7 +44,7 @@ class QueueTests: XCTestCase {
         
         var output = 0
         
-        if let nextValue = queue.head.next?.value{
+        if let nextValue = queue.head?.next?.value{
             output = nextValue
         }
         
@@ -63,7 +63,7 @@ class QueueTests: XCTestCase {
         
         var output = 0
         
-        if let nextValue = queue.head.next?.next?.value{
+        if let nextValue = queue.head?.next?.next?.value{
             output = nextValue
         }
         
@@ -83,7 +83,7 @@ class QueueTests: XCTestCase {
         let queue = Queue<Int>()
         let value = 44
         queue.enQueue(aValue: value)
-        queue.head.value = nil
+        queue.head?.value = nil
         let output = queue.deQueue()
         
         XCTAssertNil(output)
@@ -101,6 +101,29 @@ class QueueTests: XCTestCase {
         let queue = Queue<Int>()
         let output = queue.hasValues()
         XCTAssertFalse(output)
+    }
+    
+    func testThatDeQueueWillReturnNilWhenThereAreNoMoreValues() {
+        let queue = Queue<Int>()
+        let value1 = 44
+        let value2 = 45
+        let value3 = 46
+        let value4 = 47
+        let value5 = 48
+        queue.enQueue(aValue: value1)
+        queue.enQueue(aValue: value2)
+        queue.enQueue(aValue: value3)
+        queue.enQueue(aValue: value4)
+        queue.enQueue(aValue: value5)
+        _ = queue.deQueue()
+        _ = queue.deQueue()
+        _ = queue.deQueue()
+        _ = queue.deQueue()
+        _ = queue.deQueue()
+        
+        let outputNil = queue.deQueue()
+        
+        XCTAssertNil(outputNil)
     }
 
 }
