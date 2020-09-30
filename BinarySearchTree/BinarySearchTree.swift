@@ -11,6 +11,18 @@ class BSTNode<T: Comparable> {
     var value: T?
     var left: BSTNode<T>?
     var right: BSTNode<T>?
+    
+    func breathFirstSearch(_ node: BSTNode<T>) {
+        let queue = Queue<BSTNode<T>>()
+        var currentNode: BSTNode<T>
+        
+        queue.enQueue(aValue: node)
+        while queue.hasValues(){
+            if let queueNode = queue.deQueue(){
+                
+            }
+        }
+    }
 }
 
 class BinarySearchTree<T: Comparable> {

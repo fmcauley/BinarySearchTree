@@ -36,7 +36,7 @@ class Queue<T> {
         current.next = newNode
     }
     
-    func deQueue(aValue: T) -> T? {
+    func deQueue() -> T? {
         guard head.value != nil else {
             return nil
         }
@@ -51,9 +51,14 @@ class Queue<T> {
             }
             return output
         }
-       
-        
         return nil
+    }
+    
+    func hasValues() -> Bool {
+        guard head.value != nil else {
+            return false
+        }
+        return true
     }
     
     

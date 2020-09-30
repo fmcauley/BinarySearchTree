@@ -74,7 +74,7 @@ class QueueTests: XCTestCase {
         let queue = Queue<Int>()
         let value = 44
         queue.enQueue(aValue: value)
-        let output = queue.deQueue(aValue: value)
+        let output = queue.deQueue()
         
         XCTAssertEqual(output, value)
     }
@@ -84,9 +84,23 @@ class QueueTests: XCTestCase {
         let value = 44
         queue.enQueue(aValue: value)
         queue.head.value = nil
-        let output = queue.deQueue(aValue: value)
+        let output = queue.deQueue()
         
         XCTAssertNil(output)
+    }
+    
+    func testThatAQueueCanDetermineIfItHasValues() {
+        let queue = Queue<Int>()
+        let value = 100
+        queue.enQueue(aValue: value)
+        let output = queue.hasValues()
+        XCTAssertTrue(output)
+    }
+    
+    func testThatAQueueWillReturnFalseWhenThereAreNoMoreValues() {
+        let queue = Queue<Int>()
+        let output = queue.hasValues()
+        XCTAssertFalse(output)
     }
 
 }
