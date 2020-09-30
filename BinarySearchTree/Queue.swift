@@ -18,5 +18,43 @@ class Queue<T> {
         head = QNode<T>()
     }
     
+    func enQueue(aValue value: T) {
+        guard head.value != nil else {
+            head.value = value
+            return
+        }
+        
+        var current = head
+        let newNode = QNode<T>()
+        while current.next != nil {
+            if let currentNext = current.next{
+                current = currentNext
+            }
+        }
+        
+        newNode.value = value
+        current.next = newNode
+    }
+    
+    func deQueue(aValue: T) -> T? {
+        guard head.value != nil else {
+            return nil
+        }
+        
+        let current = head
+        var output: T?
+        
+        if let valueToReturn = current.value{
+            output = valueToReturn
+            if let headNext = current.next {
+                head = headNext
+            }
+            return output
+        }
+       
+        
+        return nil
+    }
+    
     
 }
