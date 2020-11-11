@@ -88,6 +88,7 @@ class BinarySearchTree<T: Comparable> {
     }
     
     func insert(value: T) {
+        
         guard root.value != nil else {
             root.value = value
             return
@@ -116,6 +117,32 @@ class BinarySearchTree<T: Comparable> {
                 }
             }
         }
+    }
+    
+    func bulkInsert(_ values:[T]) {
+        for x in values {
+            insert(value: x)
+        }
+    }
+    
+    // recursive in-order tree walk
+    func search(_ node: BSTNode<T>, _ key: T) -> T? {
+        if key == node.value {
+            return node.value
+        }
+        
+        if let nodeValue = node.value {
+            if key < nodeValue {
+                if let nodeLeft = node.left {
+                    return search(nodeLeft, key)
+                }
+            } else {
+                if let nodeRight = node.right {
+                    return search(nodeRight, key)
+                }
+            }
+        }
+        return node.value
     }
     
 }

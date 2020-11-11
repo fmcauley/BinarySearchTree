@@ -158,4 +158,23 @@ class BinarySearchTreeTests: XCTestCase {
        
     }
     
+    func testThatABSTCanAddInACollectionOfValues() {
+        let bst = BinarySearchTree<Int>()
+        let values = [5,2,6]
+        bst.bulkInsert(values)
+        
+        XCTAssertEqual(bst.root.left?.value, 2)
+    }
+    
+    func testThatABSTCanSearchForAValueThatHasBeenAdded() {
+        let bst = BinarySearchTree<Int>()
+        let values = [6,4,7]
+        bst.bulkInsert(values)
+        let current = bst.root
+        let output = bst.search(current, 7)
+        let expected = 7
+        
+        XCTAssertEqual(output, expected)
+    }
+    
 }
