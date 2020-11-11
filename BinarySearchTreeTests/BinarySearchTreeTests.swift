@@ -202,4 +202,48 @@ class BinarySearchTreeTests: XCTestCase {
         XCTAssertNil(output)
     }
     
+    func testThatBinarySearchTreeCanFindAMinValue() {
+        let bst = BinarySearchTree<Int>()
+        let values = [10,5,15]
+        bst.bulkInsert(values)
+        var current = bst.root
+        let output = bst.minimum(&current)
+        let expected = 5
+        
+        XCTAssertEqual(output, expected)
+    }
+    
+    func testThatBinarySearchTreeCanFindMinValueWithOneValue() {
+        let bst = BinarySearchTree<Int>()
+        let values = [10]
+        bst.bulkInsert(values)
+        var current = bst.root
+        let output = bst.minimum(&current)
+        let expected = 10
+        
+        XCTAssertEqual(output, expected)
+    }
+    
+    func testThatBinarySearchTreeCanFindMaxValue() {
+        let bst = BinarySearchTree<Int>()
+        let values = [10]
+        bst.bulkInsert(values)
+        var current = bst.root
+        let output = bst.maximum(&current)
+        let expected = 10
+        
+        XCTAssertEqual(output, expected)
+    }
+    
+    func testThatBinarySearchTreeCanFindMaxValueInAlistOfThree() {
+        let bst = BinarySearchTree<Int>()
+        let values = [10,5,15]
+        bst.bulkInsert(values)
+        var current = bst.root
+        let output = bst.maximum(&current)
+        let expected = 15
+        
+        XCTAssertEqual(output, expected)
+    }
+    
 }

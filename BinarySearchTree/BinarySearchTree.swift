@@ -163,4 +163,30 @@ class BinarySearchTree<T: Comparable> {
         return node.value
     }
     
+    func minimum(_ node: inout BSTNode<T>) -> T? {
+        guard node.value != nil else {
+            return node.value
+        }
+        
+        while node.left != nil {
+            if let leftNode = node.left {
+                node = leftNode
+            }
+        }
+        return node.value
+    }
+    
+    func maximum(_ node: inout BSTNode<T>) -> T? {
+        guard node.value != nil else {
+            return node.value
+        }
+        
+        while node.right != nil {
+            if let rightNode = node.right {
+                node = rightNode
+            }
+        }
+        return node.value
+    }
+    
 }
