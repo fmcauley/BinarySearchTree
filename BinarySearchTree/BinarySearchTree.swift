@@ -145,4 +145,22 @@ class BinarySearchTree<T: Comparable> {
         return node.value
     }
     
+    func interativeSearch(_ node: BSTNode<T>, _ key: T) -> T? {
+        guard node.value != nil else {
+            return node.value
+        }
+        
+        while key != node.value {
+            if let nodeValue = node.value {
+                if key < nodeValue {
+                    node.value = node.left?.value
+                } else {
+                    node.value = node.right?.value
+                }
+            }
+        }
+        
+        return node.value
+    }
+    
 }

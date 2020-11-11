@@ -177,4 +177,29 @@ class BinarySearchTreeTests: XCTestCase {
         XCTAssertEqual(output, expected)
     }
     
+    func testThatABSTSearchWillReturnNilGiveAKeyThatIsNotInTheTree() {
+        let bst = BinarySearchTree<Int>()
+        let current = bst.root
+        let output = bst.search(current, 1)
+        XCTAssertNil(output)
+    }
+    
+    func testThatBinarySearchTreeCanExecuteAnIntertiveSearch() {
+        let bst = BinarySearchTree<Int>()
+        let values = [10,1,24]
+        bst.bulkInsert(values)
+        let current = bst.root
+        let output = bst.interativeSearch(current,24)
+        let expected = 24
+        
+        XCTAssertEqual(output, expected)
+    }
+    
+    func testThatBinarySearchTreeWillReturnNilForInerativeSearchNotFoundValue() {
+        let bst = BinarySearchTree<Int>()
+        let current = bst.root
+        let output = bst.interativeSearch(current, 1)
+        XCTAssertNil(output)
+    }
+    
 }
